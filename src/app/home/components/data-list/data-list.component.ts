@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { Post } from '../../home-model';
 import { Observable } from 'rxjs';
@@ -8,14 +8,16 @@ import { Observable } from 'rxjs';
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.css']
 })
-export class DataListComponent implements OnInit {
-  @Input() public posts: Observable<Post[]>;
-  
+export class DataListComponent implements OnChanges {
+  @Input() public posts: Post[];
+  @Input() public loading: Boolean;
+
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     console.log(this.posts);
+    console.log(this.loading);
   }
 
 }

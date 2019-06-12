@@ -15,7 +15,7 @@ import { HomeEffects } from './home/effects/home-effect';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    StoreModule.forRoot({data: postReducer}),
+    StoreModule.forRoot({HomeStore: postReducer}),
     EffectsModule.forRoot([HomeEffects])
   ],
   providers: [],

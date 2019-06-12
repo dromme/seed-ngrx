@@ -4,7 +4,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HomeComponent } from './containers/home/home.component';
 import { DataListComponent } from './components/data-list/data-list.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { JsonPlaceholderService } from '../services/json-placeholder.service';
 
 @NgModule({
   declarations: [HomeComponent, DataListComponent, SpinnerComponent],
@@ -12,6 +11,5 @@ import { JsonPlaceholderService } from '../services/json-placeholder.service';
     CommonModule,
     HomeRoutingModule
   ],
-  providers: [ JsonPlaceholderService]
 })
 export class HomeModule { }

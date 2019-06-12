@@ -27,5 +27,4 @@ export type All
     GetPostSuccess |
     GetPostFail;
 
-export const loadPosts = createAction('[Home] Load Posts');
 

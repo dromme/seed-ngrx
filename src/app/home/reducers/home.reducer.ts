@@ -18,12 +18,11 @@ const initialState: State = {
 export function postReducer(state: State, action: PostActions.All) {
   switch (action.type) {
     case PostActions.GET_POST:
-      console.log('reducer getPost');
       return { ...state, loading: true };
     case PostActions.GET_POST_FAIL:
       return { ...state, loading: false };
-    case PostActions.GET_POST_FAIL:
-      return { ...state, posts: action.payload};
+    case PostActions.GET_POST_SUCCESS:
+      return { ...state, posts: action.payload, loading: false, loaded: true };
     default:
       return state;
   }

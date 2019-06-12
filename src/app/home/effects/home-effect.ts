@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { ofType, Actions, Effect, createEffect } from '@ngrx/effects';
-import { JsonPlaceholderService } from 'src/app/services/json-placeholder.service';
+import { ofType, Actions, createEffect } from '@ngrx/effects';
 import * as postActions from '../actions/home.actions';
 import { Post } from '../home-model';
-import { Observable, of } from 'rxjs';
-import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, delay } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { FakeApiService } from '../services/fake-api.service';
+
 
 @Injectable()
 export class HomeEffects {
@@ -14,9 +15,10 @@ export class HomeEffects {
   this.actions$.pipe(
     ofType(postActions.GET_POST),
     switchMap(() =>
-      this.jsonPlaceholderService.getPosts().pipe(
-        map((books: Post[]) =>
-          new postActions.GetPostSuccess(books)
+      this.service.getPosts().pipe(
+        delay(3000),
+        map((books: Post[]) => {
+          return new postActions.GetPostSuccess(books)}
         ),
         catchError(error =>
           of( new postActions.GetPostFail('ERROR'))
@@ -28,7 +30,7 @@ export class HomeEffects {
 
   constructor(
     private actions$: Actions,
-    private jsonPlaceholderService: JsonPlaceholderService
+    private service: FakeApiService
   ) {}
 
 
