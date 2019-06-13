@@ -17,8 +17,8 @@ export class HomeEffects {
     switchMap(() =>
       this.service.getPosts().pipe(
         delay(3000),
-        map((books: Post[]) => {
-          return new postActions.GetPostSuccess(books)}
+        map((posts: Post[]) => {
+          return new postActions.GetPostSuccess(posts)}
         ),
         catchError(error =>
           of( new postActions.GetPostFail('ERROR'))

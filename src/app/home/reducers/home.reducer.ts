@@ -9,13 +9,14 @@ export interface State {
   loading: boolean;
   posts: Post[];
 }
+
 const initialState: State = {
   loaded: false,
   loading: false,
   posts: []
 };
 
-export function postReducer(state: State, action: PostActions.All) {
+export function postReducer(state: State , action: PostActions.All) {
   switch (action.type) {
     case PostActions.GET_POST:
       return { ...state, loading: true };
