@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class DataListComponent implements OnChanges {
   @Input() public posts: Post[];
   @Input() public loading: Boolean;
+  @Input() public error: string;
 
   constructor() {
   }

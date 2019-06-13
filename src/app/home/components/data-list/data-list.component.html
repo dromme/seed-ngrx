@@ -1,11 +1,12 @@
 <h2 class="title"> Posts</h2>
 <app-spinner *ngIf="loading" #loading></app-spinner>
-
+<p *ngIf="error">{{ error }}</p>
 <div *ngFor="let post of posts">
   <div class="box">
     <article class="media">
       <div class="media-content">
         <div class="content">
+  
           <p>
             <strong>{{ post.title }}</strong> 
             <br>

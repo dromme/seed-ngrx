@@ -15,10 +15,12 @@ import * as reducer from "../../reducers/home.reducer";
 export class HomeComponent implements OnInit {
   posts$: Observable<Post[]>;
   loading$: Observable<Boolean>;
+  error$: Observable<string>;
 
   constructor(private store: Store<any>) {
     this.store.dispatch(new PostActions.GetPost(''));
-    this.posts$ = this.store.select(state => state.HomeStore.posts);
+    this.posts$ = this.store.select( reducer.selectPosts);
+    this.error$ = this.store.select( reducer.selectError);
     this.loading$ = this.store.select(state => state.HomeStore.loading);
   }
   ngOnInit() {}
